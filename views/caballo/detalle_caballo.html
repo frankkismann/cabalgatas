@@ -1,0 +1,326 @@
+<div class="contentwrapper">
+    <!--Content wrapper-->
+    <div class="heading">
+        <!--  .heading-->
+        <h3>Edición de caballos</h3>
+        <div class="resBtnSearch">
+            <a href="#"><span class="s16 icomoon-icon-search-3"></span></a>
+        </div>
+    </div>
+    <!-- End  / heading-->
+    <!-- Start .row -->
+    <div class="row">
+        <div class="col-lg-12" id="foto_principal">
+            <div class="panel panel-default plain panelMove">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <strong>Foto principal del caballo</strong>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="bs-callout bs-callout-danger mt0" ng-if="error_foto_principal">
+                        <p>Ha ocurrido un error al subir la imagen.</p>
+                    </div>
+                    <form class="form-horizontal" ng-submit="subir_foto_principal()" enctype='multipart/form-data'>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"><b>Imagen</b></label>
+                            <div class="col-lg-10">
+                                <input type="file" class="form-control" ngf-select ng-model="foto_principal" ngf-multiple="false" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
+                                <button type="submit" class="btn btn-success" ng-disabled="disabledFoto_principal || !foto_principal"><i class="fa fa-upload"></i> Subir</button>
+                            </div>
+                        </div>
+                    </form>
+                    <img class="img-responsive" ng-src="img/caballo/{{caballo.fotoCaballo ? caballo.fotoCaballo : 'no_image.png'}}" alt="image alt">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <!-- col-lg-12 start here -->
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">Caballo</h4>
+                </div>
+                <div class="panel-body pt0 pb0">
+                    <form ng-submit="editar_caballo()" class="form-horizontal group-border stripped">
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Nombre</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="caballo.nombreCaballo" name="nombreCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Clase de caballo</label>
+                            <div class="col-lg-10 col-md-9">
+                                <select
+                                    class="form-control"
+                                    id="clase_caballo_idClase_caballo"
+                                    ng-model="caballo.clase_caballo_idClase_caballo"
+                                    ng-options="clase_caballo.idClase_caballo as clase_caballo.nombreClase_caballo for clase_caballo in clase_caballos"
+                                    >
+                                    <option value="">
+                                        Seleccione una clase de caballo
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Marca</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="caballo.marcaCaballo" name="marcaCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Alzada</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="caballo.alzadaCaballo" name="alzadaCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Peso (Kg)</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="number" step="0.01" class="form-control" ng-model="caballo.pesoCaballo" name="pesoCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Descripción</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="caballo.descripcionCaballo" name="descripcionCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Comprado a</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="caballo.comprado_aCaballo" name="comprado_aCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Valor ($)</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="number" class="form-control" ng-model="caballo.valorCaballo" name="valorCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label">Estado</label>
+                            <div class="col-lg-10 col-md-9">
+                                <div class="radio-custom radio-inline">
+                                    <input ng-model="caballo.bloqueadoCaballo" value="1" type="radio" name="radio1" id="radio6">
+                                    <label for="radio4">Trabajando</label>
+                                </div>
+                                <div class="radio-custom radio-inline">
+                                    <input ng-model="caballo.bloqueadoCaballo" value="2" type="radio" name="radio1" id="radio6">
+                                    <label for="radio5">Repetido</label>
+                                </div>
+                                <div class="radio-custom radio-inline">
+                                    <input ng-model="caballo.bloqueadoCaballo" value="3" type="radio" name="radio1" id="radio6">
+                                    <label for="radio5">Descansando</label>
+                                </div>
+                                <div class="radio-custom radio-inline">
+                                    <input ng-model="caballo.bloqueadoCaballo" value="4" type="radio" name="radio1" id="radio6">
+                                    <label for="radio5">Enfermo</label>
+                                </div>
+                                <div class="radio-custom radio-inline">
+                                    <input ng-model="caballo.bloqueadoCaballo" value="5" type="radio" name="radio1" id="radio6">
+                                    <label for="radio5">Perdido</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-md-9">
+                                <input type="submit" class="btn btn-warning" value="Guardar cambios">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-md-9">
+                                <div ng-click="eliminar(caballo)" class="btn btn-danger">Eliminar</div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="editado">
+                            <div class="col-lg-10 col-md-9">
+                                <div class="alert alert-success fade in">
+                                    <i class="fa fa-check alert-icon "></i>
+                                    <strong>Bien hecho!</strong> Los datos han sido actualizados correctamente.
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End .panel -->
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default plain panelMove">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <strong>Ingreso de imágenes del caballo</strong>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="bs-callout bs-callout-danger mt0" ng-if="error_foto_galeria">
+                        <p>Ha ocurrido un error al subir la imagen.</p>
+                    </div>
+                    <form class="form-horizontal" ng-submit="subir_foto_galeria()">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"><b>Imágenes</b></label>
+                            <div class="col-lg-10">
+                                <input type="file" class="form-control" ngf-select ng-model="foto_galeria" ngf-multiple="false" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"><b>Descripción</b></label>
+                            <div class="col-lg-10">
+                                <textarea ng-model="descripcionGaleria" rows="4" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
+                                <button type="submit" class="btn btn-success" ng-disabled="disabledFoto_galeria || !foto_galeria"><i class="fa fa-upload"></i> Subir</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- <img class="img-responsive" ng-src="img/caballo/{{caballo.fotoCaballo ? caballo.fotoCaballo : 'no_image.png'}}" alt="image alt"> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12" ng-if="arrGalerias.length">
+            <div class="page-header gallery-category-name">
+                <h5>Galería del caballo</h5>
+            </div>
+        </div>
+        <div class="col-md-3" ng-repeat="galeria in arrGalerias">
+            <div class="panel panel-default plain panelMove">
+                <div class="panel-body">
+                    <img class="img-responsive" ng-src="img/caballo_galeria/{{galeria.fotoGaleria}}" alt="image alt">
+                    <h5 class="page-header">Descripción</h5>
+                    <p style="white-space: pre">{{galeria.descripcionGaleria}}</p>
+                    <form ng-submit="quitar_galeria(galeria)">
+                        <button type="submit" class="btn btn-warning"><i class="fa fa-close"></i> Quitar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">Pesebreras</h4>
+                </div>
+                <div class="panel-body pt0 pb0">
+                    <form ng-submit="ingresar_caballo_pesebrera()" class="form-horizontal group-border stripped">
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Pesebrera</label>
+                            <div class="col-lg-10 col-md-9">
+                                <select class="form-control" id="pesebrera_idPesebrera" ng-model="caballo_pesebrera.pesebrera_idPesebrera" ng-options="pesebrera.idPesebrera as pesebrera.nombrePesebrera for pesebrera in pesebreras">
+                                    <option value="">
+                                        Seleccione un pesebrera
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-md-9">
+                                <input type="submit" class="btn btn-success" value="Agregar pesebrera">
+                            </div>
+                        </div>
+                    </form>
+                    <table class="table" ng-show="caballo_pesebreras.length > 0">
+                        <thead>
+                            <tr>
+                                <th class="per15">Nombre</th>
+                                <th class="per15">Coordenadas</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="caballo_pesebrera in caballo_pesebreras">
+                                <td>{{caballo_pesebrera.nombrePesebrera}}</td>
+                                <td>{{caballo_pesebrera.latitudPesebrera + '/ ' + caballo_pesebrera.longitudPesebrera}}</td>
+                                <td>
+                                    <span ng-show="caballo_pesebrera.bloqueadoPesebrera == 1">
+                                        Disponible
+                                    </span>
+                                    <span ng-show="caballo_pesebrera.bloqueadoPesebrera == 0">
+                                        No disponible
+                                    </span>
+                                </td>
+                                <td>
+                                    <button ng-click="detalle_pesebrera(caballo_pesebrera)" class="btn btn-success">
+                                        Detalle
+                                    </button>
+                                    <button ng-click="quitar_pesebrera(caballo_pesebrera)" class="btn btn-danger">
+                                        Quitar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">Tratamientos</h4>
+                </div>
+                <div class="panel-body pt0 pb0">
+                    <form ng-submit="ingresar_tratamiento()" class="form-horizontal group-border stripped">
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Nombre del tratamiento</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="tratamiento.nombreTratamiento" name="nombreTratamiento" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Descripción</label>
+                            <div class="col-lg-10 col-md-9">
+                                <textarea class="form-control" ng-model="tratamiento.descripcionTratamiento" name="descripcionTratamiento" required=""></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-md-9">
+                                <input type="submit" class="btn btn-success" value="Ingresar tratamiento">
+                            </div>
+                        </div>
+                    </form>
+                    <table class="table" ng-show="tratamientos.length > 0">
+                        <thead>
+                            <tr>
+                                <th class="per15">Nombre</th>
+                                <th class="per15">Estado</th>
+                                <th class="per15">Creación</th>
+                                <th class="per15">Autor</th>
+                                <th class="per40"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="tratamiento in tratamientos">
+                                <td>{{tratamiento.nombreTratamiento}}</td>
+                                <td>
+                                    <span ng-show="tratamiento.finalizadoTratamiento==0">En proceso</span>
+                                    <span ng-show="tratamiento.finalizadoTratamiento==1">Terminado</span>
+                                </td>
+                                <td>{{tratamiento.creacionTratamiento}}</td>
+                                <td>{{tratamiento.nombre1Usuario}} {{tratamiento.apellido1Usuario}}/ {{tratamiento.rutUsuario}}</td>
+                                <td>
+                                    <button ng-click="detalle_tratamiento(tratamiento)" class="btn btn-success">
+                                        Detalle
+                                    </button>
+                                    <!--<button ng-click="quitar_tratamiento(tratamiento)" class="btn btn-danger">
+                                        Quitar
+                                    </button>-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End .row -->
+</div>
+<!-- End contentwrapper -->

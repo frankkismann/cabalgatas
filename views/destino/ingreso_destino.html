@@ -1,0 +1,185 @@
+<div class="contentwrapper">
+    <!--Content wrapper-->
+    <div class="heading">
+        <!--  .heading-->
+        <h3>Ingreso de cabalgatas</h3>
+        <div class="resBtnSearch">
+            <a href="#"><span class="s16 icomoon-icon-search-3"></span></a>
+        </div>
+    </div>
+    <!-- End  / heading-->
+    <!-- Start .row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- col-lg-12 start here -->
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">Cabalgatas</h4>
+                </div>
+                <div class="panel-body pt0 pb0">
+                    <form  class="form-horizontal group-border stripped">
+                        <div class="form-group">
+                            <label class="col-lg-1 col-md-1 control-label" for="">Destino</label>
+                            <div class="col-lg-2 col-md-2">
+                                <select 
+                                    class="form-control" 
+                                    id="clase_destino_idClase_destino" 
+                                    ng-model="destino.tipo_destino_idTipo_destino"
+                                    ng-options="tipo_destino.idTipo_destino as tipo_destino.nombreTipo_destino for tipo_destino in tipo_destinos"
+                                    >
+                                    <option value="">
+                                        Seleccione un destino
+                                    </option>
+                                </select>
+                            </div>
+                            <label class="col-lg-1 col-md-1 control-label" for="">Empresa</label>
+                            <div class="col-lg-2 col-md-2">
+                                <select 
+                                    class="form-control" 
+                                    id="cliente_idCliente" 
+                                    ng-model="cliente_destino.cliente_idCliente"
+                                    ng-options="cliente.idCliente as cliente.nombreCliente +        ' ' +        cliente.rutCliente  for cliente in clientes"
+                                    >
+                                    <option value="">
+                                        Seleccione un cliente
+                                    </option>
+                                </select>
+                            </div>
+                            <label class="col-lg-1 col-md-1 control-label" for="">Fecha inicio</label>
+                            <div class="col-lg-2 col-md-2">
+                                <input ng-click="borrar_caballos()" datetime-picker date-format="yyyy-MM-dd HH:mm:ss" class="form-control" ng-model="destino.fecha_inicioDestino" name="fecha_inicioDestino" required="">
+                            </div>
+                            <label class="col-lg-1 col-md-1 control-label" for="">Fecha de término</label>
+                            <div class="col-lg-2 col-md-2">
+                                <input ng-click="borrar_caballos()" datetime-picker date-format="yyyy-MM-dd HH:mm:ss" class="form-control" ng-model="destino.fecha_finDestino" name="fecha_finDestino" required="">
+                            </div>
+                        </div>
+                        <!--<div class="form-group">
+                            <div class="col-lg-10 col-md-9">
+                                <input type="submit" class="btn btn-success" value="Guardar">
+                            </div>
+                        </div>-->
+                    </form>
+                </div>
+            </div>
+            <!-- End .panel -->
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">Servicios</h4>
+                </div>
+                <div class="panel-body pt0 pb0">
+                    <form  class="form-horizontal group-border stripped">
+                        <div class="form-group">
+                            <label class="col-lg-1 col-md-1 control-label" for="">Pilchero</label>
+                            <div class="col-lg-2 col-md-2">
+                                <input ng-change="trabaja(caballo)" ng-model="destino.pilcheroDestino" id="check" class="check" type="checkbox" value="option2">
+                                <label for="check"></label>
+                            </div>
+                            <label class="col-lg-1 col-md-1 control-label" for="">Cabalgata</label>
+                            <div class="col-lg-2 col-md-2">
+                                <input ng-change="trabaja(caballo)" ng-model="destino.cabalgataDestino" id="check" class="check" type="checkbox" value="option2">
+                                <label for="check"></label>
+                            </div>
+                            <label class="col-lg-1 col-md-1 control-label" for="">Taxi</label>
+                            <div class="col-lg-2 col-md-2">
+                                <input ng-change="trabaja(caballo)" ng-model="destino.taxiDestino" id="check" class="check" type="checkbox" value="option2">
+                                <label for="check"></label>
+                            </div>
+                            <label class="col-lg-1 col-md-1 control-label" for="">Trabajo</label>
+                            <div class="col-lg-2 col-md-2">
+                                <input ng-change="trabaja(caballo)" ng-model="destino.trabajoDestino" id="check" class="check" type="checkbox" value="option2">
+                                <label for="check"></label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End .panel -->
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-heading white-bg">
+                    <h4 class="panel-title">Baqueanos</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table ng-table="tableParams" class="table table-bordered" show-filter="true">
+                            <tr ng-repeat="usuario in $data">
+                                <td title="'Selección'">
+                                    <input ng-model="usuario.trabaja" id="check" class="check" type="checkbox" value="option2">
+                                </td>
+                                <td title="'Nombre'" filter="{ nombre_completo: 'text'}" sortable="'nombre_completo'">
+                                    {{usuario.nombre_completo}}
+                                </td>
+                                <td title="'Rut'" filter="{ rutUsuario: 'text'}" sortable="'rutUsuario'">
+                                    {{usuario.rutUsuario}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- End .panel -->
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-heading white-bg">
+                    <h4 class="panel-title">Caballos disponibles</h4>
+                </div>
+                <div ng-disabled="cargando_caballos" class="panel panel-default">
+                    <!-- Start .panel -->
+                    <div class="panel-body">
+                        <button ng-show="contador_caballos==0" ng-click="listar_caballo()" class="btn btn-success">Ver disponibilidad de caballos</button>
+                    </div>
+                </div>
+                <div ng-show="cargando_caballos && caballos.length>0 && contador_caballos>0" class="panel panel-default">
+                    <!-- Start .panel -->
+                    <div class="panel-body">
+                        <span class="label label-warning">
+                            Cargando caballos disponibles... espere un momento. {{contador_caballos}} de {{caballos.length}}. 
+                        </span>
+                    </div>
+                </div>
+                <div ng-show="!cargando_caballos && caballos.length>0" class="panel-body">
+                    <div class="table-responsive">
+                        <table ng-table="tableParams2" class="table table-bordered" show-filter="true">
+                            <tr ng-repeat="caballo in $data">
+                                <td title="'Selección'">
+                                    <input ng-show="!caballo.horario_ocupado && !caballo.comprobando" ng-model="caballo.cabalga" id="check" class="check" type="checkbox" value="option2">
+                                    <span class="label label-warning" ng-show="caballo.comprobando">Comprobando horario...</span>
+                                    <span class="label label-danger" ng-show="caballo.horario_ocupado">Ocupado en el mismo horario por otra cabalgata.</span>
+                                </td>
+                                <td title="'Nombre'" filter="{ nombreCaballo: 'text'}" sortable="'nombreCaballo'">
+                                    {{caballo.nombreCaballo}}
+                                </td>
+                                <td title="'Estado'" filter="{ disponible: 'text'}" sortable="'disponible'">
+                                    {{caballo.disponible}} 
+                                </td>
+                                <td title="'Clase'" filter="{ nombreClase_caballo: 'text'}" sortable="'nombreClase_caballo'">
+                                    {{caballo.nombreClase_caballo}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- End .panel -->
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-body">
+                    <span class="label label-warning" ng-show="ingresando">
+                        Guardando datos, espere un momento...
+                    </span>
+                    <br>
+                    <br>
+                    <input ng-show="contador_caballos>0 && contador_caballos==caballos.length" type="button" ng-disabled="ingresando" ng-click="ingresar_destino()" class="btn btn-success" value="Crear cabalgata">
+                </div>
+            </div>
+            <!-- End .panel -->
+
+        </div>
+        <!-- col-lg-12 end here -->
+    </div>
+    <!-- End .row -->
+</div>
+<!-- End contentwrapper -->

@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="core">
+        Cabalgatas <span class="slogan">sistema</span>
+    </a>
+    </div>
+    <div id="navbar-no-collapse" class="navbar-no-collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a style="cursor:pointer;" ng-click="collapse_nav()" class="collapseBtn leftbar"><i class="s16 minia-icon-list-3"></i></a>
+            </li>
+        </ul>
+        <ul class="nav navbar-right usernav">
+            <li class="dropdown">
+                <a class="avatar">
+                    <span class="txt">{{usuarioConectado.nombre1Usuario + ' ' + usuarioConectado.apellido1Usuario}}</span>
+                </a>
+            </li>
+            <li>
+                <a ng-click="cerrar_sesion()" style="cursor:pointer;"><i class="s16 icomoon-icon-exit"></i><span class="txt"> Cerrar sesión</span></a>
+            </li>
+        </ul>
+    </div>
+    <!-- /.nav-collapse -->
+</nav>
+<!-- /navbar -->

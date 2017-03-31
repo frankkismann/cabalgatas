@@ -1,0 +1,280 @@
+<div class="contentwrapper">
+    <!--Content wrapper-->
+    <div class="heading">
+        <!--  .heading-->
+        <h3>Inicio</h3>
+    </div>
+    <!-- End  / heading-->
+    <!-- Start .row -->
+    <div class="row">
+        
+        <div class="row">
+                        <!-- .row -->
+                        <div class="col-md-12">
+                            <!-- col-md-8 start here -->
+                            <div class="row">
+                                <!-- .row start -->
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <!-- .col-md-3 -->
+                                    <a href="#" title="I`m with gradient" class="stats-btn tipB mb20">
+                                        <i class="icon icomoon-icon-google-plus-2"></i>
+                                        <span class="txt">Nueva Cabalgata</span>
+                                    </a>
+                                </div>
+                                <!-- / .col-md-3 -->
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <!-- .col-md-3 -->
+                                    <a href="#" class="stats-btn mb20">
+                                        <i class="icon icomoon-icon-calendar-2"></i>
+                                        <span class="txt">Cabalgatas</span>
+                                        <span class="notification blue">{{destinos.length}}</span>
+                                    </a>
+                                </div>
+                                <!-- / .col-md-3 -->
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <!-- .col-md-3 -->
+                                    <a ui-sref="main.ingreso_destino" title="I`m with pattern" class="stats-btn pattern tipB mb20">
+                                        <i class="icon icomoon-icon-file-plus"></i>
+                                        <span class="txt">Nuevo Caballo</span>
+                                        <span class="notification green">23</span>
+                                    </a>
+                                </div>
+                                <!-- / .col-md-3 -->
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <!-- .col-md-3 -->
+                                    <a href="#" class="stats-btn mb20">
+                                        <i class="icon icomoon-icon-knight"></i>
+                                        <span class="txt">Caballos</span>
+                                        <span class="notification">{{caballos.length}}</span>
+                                    </a>
+                                </div>
+                                <!-- / .col-md-3 -->
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <!-- .col-md-3 -->
+                                    <a href="#" class="stats-btn mb20">
+                                        <i class="icon icomoon-icon-basket"></i>
+                                        <span class="txt">Orders</span>
+                                        <span class="notification">+5</span>
+                                    </a>
+                                </div>
+                                <!-- / .col-md-3 -->
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                                    <!-- .col-md-3 -->
+                                    <a href="#" class="stats-btn mb20">
+                                        <i class="icon icomoon-icon-basket"></i>
+                                        <span class="txt">Orders</span>
+                                        <span class="notification">+5</span>
+                                    </a>
+                                </div>
+                                <!-- / .col-md-3 -->
+                            </div>
+                            <!-- / .row -->
+                        </div>
+                        <!-- col-md-8 end here -->
+                    </div>
+        
+        <div class="col-lg-12">
+            <!-- col-lg-3 start here -->
+            <div class="panel panel-default toggle panelMove panelClose panelRefresh" id="supr0">
+                <!-- Start .panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">Filtrar por fecha</h4>
+                    <div class="panel-controls panel-controls-right"><a href="#" class="panel-refresh"><i class="brocco-icon-refresh s12"></i></a><a href="#" class="toggle panel-minimize"><i class="icomoon-icon-plus"></i></a><a href="#" class="panel-close"><i class="icomoon-icon-close"></i></a></div></div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group col-lg-5 col-md-5">
+                            <label class="col-lg-5 col-md-5 control-label" for="">Fecha de inicio</label>
+                            <div class="col-lg-7 col-md-7">
+                                <input datetime-picker date-format="yyyy-MM-dd HH:mm:ss" ng-model="filtro.fecha_inicioDestino" type="text" class="form-control" id="event-title" name="event-title">
+                            </div>
+                        </div>
+                        <!-- End .form-group  -->
+                        <div class="form-group col-lg-5 col-md-5">
+                            <label class="col-lg-5 col-md-5 control-label" for="">Fecha de término</label>
+                            <div class="col-lg-7 col-md-7">
+                                <input datetime-picker date-format="yyyy-MM-dd HH:mm:ss" ng-model="filtro.fecha_finDestino" type="text" class="form-control" id="event-title" name="event-title">
+                            </div>
+                        </div>
+                        <!-- End .form-group  -->
+                        <div class="form-group col-lg-2 col-md-2">
+                            <div class="col-lg-12">
+                                <button ng-click="filtrar()" class="btn btn-default">Filtrar</button>
+                            </div>
+                            
+                        </div>
+                        <!-- End .form-group  -->
+                    </form>
+                    
+                        
+                </div>
+            </div>
+            <!-- End .panel -->
+        </div>
+                            <div class="col-lg-12">
+                                <div ng-show="destinos.length == 0">
+                                    <br>
+                                    <br>
+                                    <div class="alert alert-warning fade in" ng-show="destinos.length == 0">
+                                        <i class="glyphicon glyphicon-warning-sign alert-icon "></i>
+                                        <strong>Sin resultados!</strong> No se han encontrado cabalgatas asociadas.
+                                    </div>
+                                </div>
+                                <div ng-show="destinos.length > 0">
+                                    <br>
+                                    <br>
+                                    <div class="alert alert-success fade in" ng-show="destinos.length > 1">
+                                        <i class="glyphicon glyphicon-warning-sign alert-icon "></i>
+                                        <strong>{{destinos.length}} cabalgatas encontradas</strong> Se han encontrado {{destinos.length}} cabalgatas.
+                                    </div>
+                                    <div class="alert alert-success fade in" ng-show="destinos.length == 1">
+                                        <i class="glyphicon glyphicon-warning-sign alert-icon "></i>
+                                        <strong>{{destinos.length}} cabalgata encontrada</strong> Se ha encontrado {{destinos.length}} cabalgata.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        <!-- End .form-group  -->
+                        
+        <!-- col-md-6 end here -->
+        <div ng-show="destinos.length > 0" class="col-md-6" ng-repeat="destino in destinos">
+            <div class="panel panel-default toggle panelClose panelRefresh">
+                <!-- Start .panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title"><i class="icomoon-icon-road"></i> Cabalgata {{destino.nombreTipo_destino}}</h4>
+                </div>
+                <div class="panel-body p0">
+                    <div class="twitter-widget">
+                        <!-- .twitter widget -->
+                        <div class="twitter-widget-header">
+                            <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                                <!-- col-lg-4 start here -->
+                                <a href="#">
+                                    <p class="twitter-widget-text">Fecha de inicio</p>
+                                    <strong class="twitter-widget-number">{{destino.fecha_inicioDestino}}</strong> 
+                                </a>
+                            </div>
+                            <!-- col-lg-4 end here -->
+                            <div class="col-lg-4 col-lg-4 col-md-4 col-sm-4 text-center">
+                                <!-- col-lg-4 start here -->
+                                <a href="#">
+                                    <p class="twitter-widget-text">Fecha de término</p>
+                                    <strong class="twitter-widget-number">{{destino.fecha_finDestino}}</strong> 
+                                </a>
+                            </div>
+                            <!-- col-lg-4 end here -->
+                            <div class="col-lg-4 col-lg-4 col-md-4 col-sm-4 text-center">
+                                <!-- col-lg-4 start here -->
+                                <a href="#">
+                                    <p class="twitter-widget-text">Baqueanos</p>
+                                    <strong class="twitter-widget-number">{{destino.usuario_destinos.length}}</strong> 
+                                </a>
+                            </div>
+                            <!-- col-lg-4 end here -->
+                        </div>
+                        <div class="twitter-widget-tweets">
+                            <ul>
+                                <li>
+                                    <p>
+                                        CABALLOS
+                                    </p>
+                                    <p class="tweet-text" ng-repeat="caballo in destino.caballo_destinos">
+                                        <b>{{$index + 1}})</b> {{MaysPrimera(caballo.nombreCaballo)}}
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        BAQUEANOS
+                                    </p>
+                                    <p class="tweet-text" ng-repeat="usuario in destino.usuario_destinos">
+                                        <b>{{$index + 1}})</b> {{MaysPrimera(usuario.nombre1Usuario)}} {{MaysPrimera(usuario.apellido1Usuario)}}
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        CLIENTES
+                                    </p>
+                                    <!--<img class="twitter-widget-avatar" src="img/avatars/2.jpg" alt="">-->
+                                    <p class="tweet-text" ng-repeat="cliente in destino.cliente_destinos">
+                                        <b>{{$index + 1}})</b> {{MaysPrimera(cliente.nombreCliente)}}
+                                    </p>
+                                    <!--<span class="twitter-widget-date">12:55 PM - 24 Apr 2014</span>-->
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- / .twitter widget -->
+            </div>
+            <!-- / .panel -->
+        </div>
+        <!-- col-md-6 end here -->
+    </div>
+    <!-- / .row -->
+    <div class="row">
+        <div class="panel panel-default toggle panelMove panelClose panelRefresh" id="supr1">
+            <!-- Start .panel -->
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <font>
+                    <font>
+                    Opciones con caballos
+                    </font>
+
+                    </font>
+                </h4>
+                <div class="panel-controls panel-controls-right">
+                    <a href="#" class="panel-refresh">
+                        <i class="brocco-icon-refresh s12"></i>
+                    </a>
+                    <a href="#" class="toggle panel-minimize">
+                        <i class="icomoon-icon-plus"></i>
+                    </a>
+                    <a href="#" class="panel-close">
+                        <i class="icomoon-icon-close"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <button type="button" ng-click="disponibilizar_caballos()" class="btn btn-primary mr5 mb10"><font><font>Formación de tropillas</font></font></button>
+                <button type="button" ng-click="ingresar_caballo()" class="btn btn-primary mr5 mb10"><font><font>Ingresar caballo</font></font></button>
+                <button type="button" ng-click="listar_caballos()" class="btn btn-primary mr5 mb10"><font><font>Listado de caballos</font></font></button>
+                <!--<button type="button" class="btn btn-success btn-round mr5 mb10"><font><font>1</font></font></button>
+                <button type="button" class="btn btn-pink btn-block"><font><font>botón de bloqueo</font></font></button>-->
+            </div>
+        </div>
+        <div class="panel panel-default toggle panelMove panelClose panelRefresh" id="supr1">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <font>
+                    <font>
+                    Gráfico de líneas de estado de caballos
+                    </font>
+
+                    </font>
+                </h4>
+                <div class="panel-controls panel-controls-right"><a href="#" class="panel-refresh"><i class="brocco-icon-refresh s12"></i></a><a href="#" class="toggle panel-minimize"><i class="icomoon-icon-plus"></i></a><a href="#" class="panel-close"><i class="icomoon-icon-close"></i></a></div></div>
+            <div class="panel-body">
+                <div id="container" style="max-width: 1000px; height: 400px;"></div>
+            </div>
+        </div>
+        <div class="panel panel-default toggle panelMove panelClose panelRefresh" id="supr1">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <font>
+                    <font>
+                    Gráfico circular de estado de caballos
+                    </font>
+
+                    </font>
+                </h4>
+                <div class="panel-controls panel-controls-right"><a href="#" class="panel-refresh"><i class="brocco-icon-refresh s12"></i></a><a href="#" class="toggle panel-minimize"><i class="icomoon-icon-plus"></i></a><a href="#" class="panel-close"><i class="icomoon-icon-close"></i></a></div></div>
+            <div class="panel-body">
+                <div id="container2" style="max-width: 1000px; height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End .row -->
+</div>
+<!-- End contentwrapper -->
+<script src="js/highcharts.js"></script>
+<script src="js/exporting.js"></script>

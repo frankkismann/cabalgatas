@@ -1,0 +1,93 @@
+<div class="contentwrapper">
+    <!--Content wrapper-->
+    <div class="heading">
+        <!--  .heading-->
+        <h3>Formación de tropillas</h3>
+        <div class="resBtnSearch">
+            <a href="#"><span class="s16 icomoon-icon-search-3"></span></a>
+        </div>
+    </div>
+    <!-- End  / heading-->
+    <!-- Start .row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default toggle panelMove panelClose panelRefresh" id="supr0">
+                <!-- Start .panel -->
+                <div class="panel-heading white-bg">
+                    <h4 class="panel-title">Seleccione caballos de trabajo y descanzo</h4>
+                    <div class="panel-controls panel-controls-right"><a href="#" class="panel-refresh"><i class="brocco-icon-refresh s12" ng-click="actualiza()"></i></a><a href="#" class="toggle panel-minimize"><i class="icomoon-icon-plus"></i></a><a href="#" class="panel-close"><i class="icomoon-icon-close"></i></a></div></div>
+                <div class="panel-body">
+                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: 100%; height: auto;"><div class="table-responsive" style="overflow: hidden; width: 100%; height: auto;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="per5">Número</th>
+                                        <th class="per30">Nombre</th>
+                                        <th class="per15">
+                                            <div class="checkbox-custom">
+                                                <input ng-model="todos_trabajan" ng-change="trabajan()" class="check-all" type="checkbox" id="masterCheck">
+                                                <label for="masterCheck">Trabaja</label>
+                                            </div>
+                                        </th>
+                                        <th class="per15">
+                                            <div class="checkbox-custom">
+                                                <input ng-model="ninguno_trabaja" ng-change="no_trabajan()" class="check-all" type="checkbox" id="masterCheck">
+                                                <label for="masterCheck">No trabaja</label>
+                                            </div>
+                                        </th>
+                                        <th class="per35">Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="caballo in caballos" class="highlight">
+                                        <td>
+                                            {{($index + 1)}}
+                                        </td>
+                                        <td>
+                                            {{caballo.nombreCaballo}}
+                                        </td>
+                                        <td>
+                                            <div class="checkbox-custom">
+                                                <input ng-change="trabaja(caballo)" ng-model="caballo.trabaja" id="check" class="check" type="checkbox" value="option2">
+                                                <label for="check"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="checkbox-custom">
+                                                <input ng-change="no_trabaja(caballo)" ng-model="caballo.no_trabaja" id="check" class="check" type="checkbox" value="option2">
+                                                <label for="check"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="label label-success" ng-show="caballo.bloqueadoCaballo == 1">Trabajando</span>
+                                            <span class="label label-danger" ng-show="caballo.bloqueadoCaballo == 2">Repetido</span>
+                                            <span class="label label-success" ng-show="caballo.bloqueadoCaballo == 3">Descansando</span>
+                                            <span class="label label-danger" ng-show="caballo.bloqueadoCaballo == 4">Enfermo</span>
+                                            <span class="label label-danger" ng-show="caballo.bloqueadoCaballo == 5">Perdido</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <span ng-show="continuando" class="label label-warning">
+                                                Estamos trabajando, espere un momento...
+                                            </span>
+                                            <br ng-show="continuando">
+                                            <br ng-show="continuando">
+                                            <div ng-disabled="continuando" ng-click="disponibilizar_caballos()" class="btn btn-warning">Previsualizar</div>
+                                            <div ng-disabled="continuando"  ng-show="previsualizados" ng-click="continuar()" class="btn btn-success">Continuar</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="slimScrollBar ui-draggable" style="background: rgb(243, 243, 243); height: 5px; position: absolute; bottom: 3px; opacity: 0.4; display: none; border-radius: 5px; z-index: 99; width: 725px; left: 0px;"></div><div class="slimScrollRail" style="width: 100%; height: 5px; position: absolute; bottom: 3px; display: none; border-radius: 5px; background: rgb(51, 51, 51); opacity: 0.3; z-index: 90;"></div></div>
+                </div>
+            </div>
+        </div>
+        <!-- col-lg-12 end here -->
+    </div>
+    <!-- End .row -->
+    <!-- End .row -->
+</div>
+<!-- End contentwrapper -->

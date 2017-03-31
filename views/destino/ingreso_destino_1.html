@@ -1,0 +1,64 @@
+<div class="contentwrapper">
+    <!--Content wrapper-->
+    <div class="heading">
+        <!--  .heading-->
+        <h3>Ingreso de destinos</h3>
+        <div class="resBtnSearch">
+            <a href="#"><span class="s16 icomoon-icon-search-3"></span></a>
+        </div>
+    </div>
+    <!-- End  / heading-->
+    <!-- Start .row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- col-lg-12 start here -->
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">Destino</h4>
+                </div>
+                <div class="panel-body pt0 pb0">
+                    <form ng-submit="ingresar_destino()" class="form-horizontal group-border stripped">
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Fecha de inicio</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="destino.fecha_inicioDestino" name="fecha_inicioDestino" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Fecha de término</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="destino.fecha_finDestino" name="fecha_finDestino" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Tipo de destino</label>
+                            <div class="col-lg-10 col-md-9">
+                                <select 
+                                    class="form-control" 
+                                    id="clase_destino_idClase_destino" 
+                                    ng-model="destino.tipo_destino_idTipo_destino"
+                                    ng-options="tipo_destino.idTipo_destino as tipo_destino.nombreTipo_destino for tipo_destino in tipo_destinos"
+                                    >
+                                    <option value="">
+                                        Seleccione un tipo de destino
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-md-9">
+                                <input type="submit" class="btn btn-success" value="Guardar">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End .panel -->
+        </div>
+        <!-- col-lg-12 end here -->
+    </div>
+    <!-- End .row -->
+    <!-- End .row -->
+</div>
+<!-- End contentwrapper -->

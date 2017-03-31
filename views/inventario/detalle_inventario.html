@@ -1,0 +1,90 @@
+<div class="contentwrapper">
+    <!--Content wrapper-->
+    <div class="heading">
+        <!--  .heading-->
+        <h3>Edición de inventarios</h3>
+        <div class="resBtnSearch">
+            <a href="#"><span class="s16 icomoon-icon-search-3"></span></a>
+        </div>
+    </div>
+    <!-- End  / heading-->
+    <!-- Start .row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- col-lg-12 start here -->
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">Inventario</h4>
+                </div>
+                <div class="panel-body pt0 pb0">
+                    <form ng-submit="editar_inventario()" class="form-horizontal group-border stripped">
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Ítem</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="inventario.itemInventario" name="itemInventario" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Cantidad</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="number" class="form-control" ng-model="inventario.cantidad_itemInventario" name="cantidad_itemInventario" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-md-9">
+                                <input type="submit" class="btn btn-warning" value="Guardar cambios">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-md-9">
+                                <div ng-click="eliminar(inventario)" class="btn btn-danger">Eliminar</div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="editado">
+                            <div class="col-lg-10 col-md-9">
+                                <div class="alert alert-success fade in">
+                                    <i class="fa fa-check alert-icon "></i>
+                                    <strong>Bien hecho!</strong> Los datos han sido actualizados correctamente.
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End .panel -->
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default plain panelMove">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <strong>Foto principal del inventario</strong>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="bs-callout bs-callout-danger mt0" ng-if="error_foto_inventario">
+                        <p>Ha ocurrido un error al subir la imagen.</p>
+                    </div>
+                    <form class="form-horizontal" ng-submit="subir_foto_inventario()">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"><b>Imagen</b></label>
+                            <div class="col-lg-10">
+                                <input type="file" class="form-control" ngf-select ng-model="foto_inventario" ngf-multiple="false" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
+                                <button type="submit" class="btn btn-success" ng-disabled="disabledFoto_inventario || !foto_inventario"><i class="fa fa-upload"></i> Subir</button>
+                            </div>
+                        </div>
+                    </form>
+                    <img class="img-responsive" ng-src="img/inventario/{{inventario.fotoInventario ? inventario.fotoInventario : 'no_image.png'}}" alt="image alt">
+                </div>
+            </div>
+        </div>
+        <!-- col-lg-12 end here -->
+    </div>
+    <!-- End .row -->
+    <!-- End .row -->
+</div>
+<!-- End contentwrapper -->

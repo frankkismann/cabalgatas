@@ -1,0 +1,47 @@
+<div class="contentwrapper">
+    <!--Content wrapper-->
+    <div class="heading">
+        <!--  .heading-->
+        <h3>Listado de historiales de herraje</h3>
+    </div>
+    <!-- End  / heading-->
+    <!-- Start .row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- col-lg-12 start here -->
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-heading white-bg">
+                    <h4 class="panel-title">Historiales de herraje</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table ng-table="tableParams" class="table table-bordered" show-filter="true">
+                            <tr ng-repeat="historial_herraje in $data">
+                                <td title="'Descripción'" filter="{ descripcionHistorial_herraje: 'text'}" sortable="'descripcionHistorial_herraje'">
+                                    {{historial_herraje.descripcionHistorial_herraje}}
+                                </td>
+                                <td title="'Caballo'" filter="{ nombre_peso: 'text'}" sortable="'nombre_peso'">
+                                    {{historial_herraje.nombre_peso}}
+                                </td>
+                                <td title="'Registrado por'" filter="{ creado_por: 'text'}" sortable="'creado_por'">
+                                    {{historial_herraje.creado_por}}
+                                </td>
+                                <td title="'Creación'" filter="{ creacion: 'text'}" sortable="'creacion'">
+                                    {{historial_herraje.creacion}}
+                                </td>
+                                <td title="'Detalle'">
+                                    <button ng-click="detalle(historial_herraje)" class="btn btn-success">Detalle</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- End .panel -->
+        </div>
+        <!-- col-lg-12 end here -->
+    </div>
+    <!-- End .row -->
+</div>
+<!-- End contentwrapper -->

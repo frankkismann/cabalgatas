@@ -1,0 +1,53 @@
+<div class="contentwrapper">
+    <!--Content wrapper-->
+    <div class="heading">
+        <!--  .heading-->
+        <h3>Listado de caballos</h3>
+    </div>
+    <!-- End  / heading-->
+    <!-- Start .row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- col-lg-12 start here -->
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-heading white-bg">
+                    <h4 class="panel-title">Caballos</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table ng-table="tableParams" class="table table-bordered" show-filter="true">
+                            <tr ng-repeat="caballo in $data">
+                                <td title="'Valor($)'" filter="{ valorCaballo: 'number'}" sortable="'valorCaballo'">
+                                    {{caballo.valorCaballo | currency:'$':0}}
+                                </td>
+                                <td title="'Nombre'" filter="{ nombreCaballo: 'text'}" sortable="'nombreCaballo'">
+                                    {{caballo.nombreCaballo}}
+                                </td>
+                                <td title="'Peso'" filter="{ pesoCaballo: 'number'}" sortable="'pesoCaballo'">
+                                    {{caballo.pesoCaballo}}Kg
+                                </td>
+                                <td title="'Estado'" filter="{ disponible: 'text'}" sortable="'disponible'">
+                                    {{caballo.disponible}}
+                                </td>
+                                <td title="'Clase'" filter="{ nombreClase_caballo: 'text'}" sortable="'nombreClase_caballo'">
+                                    {{caballo.nombreClase_caballo}}
+                                </td>
+                                <td title="'Creación'" filter="{ creacion: 'text'}" sortable="'creacion'">
+                                    {{caballo.creacion}}
+                                </td>
+                                <td title="'Detalle'">
+                                  <button ng-click="detalle(caballo)" class="btn btn-success">Detalle</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- End .panel -->
+        </div>
+        <!-- col-lg-12 end here -->
+    </div>
+    <!-- End .row -->
+</div>
+<!-- End contentwrapper -->

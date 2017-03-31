@@ -1,0 +1,119 @@
+<div class="contentwrapper">
+    <!--Content wrapper-->
+    <div class="heading">
+        <!--  .heading-->
+        <h3>Ingreso de caballos</h3>
+        <div class="resBtnSearch">
+            <a href="#"><span class="s16 icomoon-icon-search-3"></span></a>
+        </div>
+    </div>
+    <!-- End  / heading-->
+    <!-- Start .row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- col-lg-12 start here -->
+            <div class="panel panel-default">
+                <!-- Start .panel -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">Caballo</h4>
+                </div>
+                <div class="panel-body pt0 pb0">
+                    <form ng-submit="ingresar_caballo()" class="form-horizontal group-border stripped">
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Nombre</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="caballo.nombreCaballo" name="nombreCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Clase de caballo</label>
+                            <div class="col-lg-10 col-md-9">
+                                <select 
+                                    class="form-control" 
+                                    id="clase_caballo_idClase_caballo" 
+                                    ng-model="caballo.clase_caballo_idClase_caballo"
+                                    ng-options="clase_caballo.idClase_caballo as clase_caballo.nombreClase_caballo for clase_caballo in clase_caballos"
+                                    >
+                                    <option value="">
+                                        Seleccione una clase de caballo
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Marca</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="caballo.marcaCaballo" name="marcaCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Alzada</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="caballo.alzadaCaballo" name="alzadaCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Peso (Kg)</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="number" step="0.01" class="form-control" ng-model="caballo.pesoCaballo" name="pesoCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Descripción</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="caballo.descripcionCaballo" name="descripcionCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Comprado a</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="text" class="form-control" ng-model="caballo.comprado_aCaballo" name="comprado_aCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label" for="">Valor ($)</label>
+                            <div class="col-lg-10 col-md-9">
+                                <input type="number" class="form-control" ng-model="caballo.valorCaballo" name="valorCaballo" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 col-md-3 control-label">Estado</label>
+                            <div class="col-lg-10 col-md-9">
+                                <div class="radio-custom radio-inline">
+                                    <input ng-model="caballo.bloqueadoCaballo" value="1" type="radio" name="radio1" id="radio6">
+                                    <label for="radio4">Trabajando</label>
+                                </div>
+                                <div class="radio-custom radio-inline">
+                                    <input ng-model="caballo.bloqueadoCaballo" value="2" type="radio" name="radio1" id="radio6">
+                                    <label for="radio5">Repetido</label>
+                                </div>
+                                <div class="radio-custom radio-inline">
+                                    <input ng-model="caballo.bloqueadoCaballo" value="3" type="radio" name="radio1" id="radio6">
+                                    <label for="radio5">Descansando</label>
+                                </div>
+                                <div class="radio-custom radio-inline">
+                                    <input ng-model="caballo.bloqueadoCaballo" value="4" type="radio" name="radio1" id="radio6">
+                                    <label for="radio5">Enfermo</label>
+                                </div>
+                                <div class="radio-custom radio-inline">
+                                    <input ng-model="caballo.bloqueadoCaballo" value="5" type="radio" name="radio1" id="radio6">
+                                    <label for="radio5">Perdido</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-md-9">
+                                <input ng-disabled="guardando" type="submit" class="btn btn-success" value="Guardar">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End .panel -->
+        </div>
+        <!-- col-lg-12 end here -->
+    </div>
+    <!-- End .row -->
+    <!-- End .row -->
+</div>
+<!-- End contentwrapper -->
